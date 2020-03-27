@@ -3,5 +3,5 @@ The V-ON directive is used to monitor events and bind that event to either an in
 
 - ex. click events
 - <button v-on:click='methodName'></button>
-OR
+OR 
 - <button @click='methodName'></button>
