@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>V-ON</title>
+    <meta http-equiv='content-type' content='text/html;charset=utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        div,
+        p,
+        span {
+            font-family: helvetica;
+            padding: 0;
+            margin: 0;
+            word-break: break-all
+        }
+    </style>
+    <script type='text/javascript' src='vue.js'></script>
+
+<body>
+
+    <div id='app'>
+        <input v-model='message'>
+        <!-- //p tag content will be in real time synce with input -->
+        <p>{{ message }}</p>
+        <hr>
+
+
+        <!-- inserting .lazy will make the p tag message NOT in sync -->
+        <input v-model.lazy='message_2'>
+        <!-- //p tag content will be in real time synce with input -->
+        <p>{{ message_2 }}</p>
+
+        <hr>
+        <textarea v-model='txtarea_example'></textarea>
+
+        <!-- If done this way, the input will not store. You will want to have v-model for text area instead -->
+        <!-- <textarea> {{ txtarea_example }} </textarea> -->
+        <hr>
+        <br>
+        <span>apple</span><input type="radio" value='apple' v-model='radio_exp'>
+        <span>peach</span><input type="radio" value='peach' v-model='radio_exp'>
+        <span>orange</span><input type="radio" value='orange' v-model='radio_exp'>
+        <p>You have selected: <span> {{ radio_exp }} </span></p>
+
+        <hr>
+        <br>
+        <span>apple</span><input type="checkbox" value='apple' v-model='check_exp'>
+        <span>peach</span><input type="checkbox" value='peach' v-model='check_exp'>
+        <span>orange</span><input type="checkbox" value='orange' v-model='check_exp'>
+        <p>You have selected: <span> {{ check_exp }} </span></p>
+
+        <hr>
+        <br>
+        <select v-model='select_exp'>
+            <option value="apple">Option 1</option>
+            <option value="pear">Option 2</option>
+            <option value="grape">Option 3</option>
+            <option value="orange">Option 4</option>
+        </select>
+        <p>You have selected: <span> {{ select_exp }} </span></p>
+        
+    </div>
+
+    <script type='text/javascript'>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'initial value set in DATA',
+                message_2: 'initial value set in DATA',
+                txtarea_example: 'initial textarea value set in DATA',
+                radio_exp : 'peach',
+                check_exp : [],
+                select_exp:'',
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+
+</html>
