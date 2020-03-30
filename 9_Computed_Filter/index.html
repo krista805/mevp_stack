@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Computer and Filter</title>
+    <meta http-equiv='content-type' content='text/html;charset=utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        div,
+        p,
+        span {
+            font-family: helvetica;
+            padding: 0;
+            margin: 0;
+            word-break: break-all
+        }
+    </style>
+    <script type='text/javascript' src='vue.js'></script>
+
+<body>
+
+    <div id='app'>
+        <!-- example for capitalizing letters -->
+        <input v-model="message">
+        <br>
+        <p v-bind:title='title|capitalize'>You have selected: <span> {{ message | capitalize}} </span></p>
+        <hr/>
+        
+        <!-- example for reverse letter ordering in p tag (choose computed because it's a more complicated job) -->
+        <input v-model="messageRev">
+        <p v-bind:title='titleRev'>You have selected: <span> {{ computed_msg }} </span></p>
+    </div>
+
+    <script type='text/javascript'>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'message set in data',
+                title: 'title set in title',
+                titleRev: 'title set in reverse title',
+                messageRev: 'abc123',
+            },
+
+            computed: {
+                // example for reversing letters
+                computed_msg:function(){
+                    // return 'value set in computed'
+                    //reverse string using js split, reverse and join methods
+                    return this.messageRev.split('').reverse().join('')
+                }
+            },
+
+            filters: {
+                // example for capitalizing letters
+                capitalize: function(v){
+                    return v.toUpperCase()
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
