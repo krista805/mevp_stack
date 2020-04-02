@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VUE the v-model directive</title>
+		<meta http-equiv='content-type' content='text/html;charset=utf-8'>
+		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+		<style>
+			h1,div,p,span{font-size:66px;font-family:helvetica}
+			.red_font{color:red}
+			.blue_background{background:blue}
+            .grey_background{background:#666}
+			.heavy_font{font-weight:bold}
+		</style>
+		<script type='text/javascript' src='vue.js'></script>
+	<body>	
+		<div id='app'>
+            <h2 v-bind:class='class_name'>I am a h2 tag...</h2>
+            <h4 v-bind:class=[class_one,class_two]>I am a h4 tag...</h4>
+            <p v-bind:class={red_font:true}>I am a p tag...</p>
+
+            <!-- cleaner way to assign json object -->
+            <p v-bind:class='class_object'>I am a P tag...</p>
+		</div>
+	<script type='text/javascript'>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+                class_name:'red_font',
+                class_one:'heavy_font',
+                class_two:'grey_background',
+				switch_on:true,
+                switch_off:false,
+			},
+			computed:{
+				class_object:function(){
+					return{
+						red_font:this.switch_on,
+						blue_background:this.switch_on,
+						heavy_font:this.switch_on,
+					}
+                }
+			},
+			methods:{},
+		})
+	</script>	
+	</body>
+</html>
+

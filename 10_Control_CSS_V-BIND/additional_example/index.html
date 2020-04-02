@@ -2,32 +2,39 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>VUE</title>
+		<title>VUE Character Limit Project</title>
 		<meta http-equiv='content-type' content='text/html;charset=utf-8'>
 		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
 		<style>
-			h1,div,p,span{font-size:66px;font-family:helvetica}
+			h1,div,p,span{font-size:18px;font-family:helvetica}
+			.warning{border:red solid 2px}
 		</style>
 		<script type='text/javascript' src='vue.js'></script>
 	<body>	
 		<div id='app'>
-			<p v-bind:style='{color:color_choice, background:bg_color}'>I am a P tag...</p>
-			<hr>
-			<p v-bind:style='style_object'>I am a P tag...</p>
+			<textarea v-bind:class='{show:remain,warning:!remain}' v-model='message' v-on:input='check'></textarea>
+			<p>{{remain}}/{{limit}}</p><!-- remain: how many characters left. limit: maximum character number-->
 		</div>
 	<script type='text/javascript'>
 		var vm = new Vue({
 			el:'#app',
 			data:{
-				color_choice:'red',
-				bg_color: 'blue',
-				style_object: {
-					color:'red',
-					background:'yellow'
+				message:'User-submitted data stored here...',
+				//limit is a fixed value set by us
+				limit:50,
+			},
+			computed:{
+				remain:function(){
+					return this.limit - this.message.length
 				}
 			},
-			computed:{},
-			methods:{},
+			methods:{
+				check:function(){
+					if(this.remain < 0){
+						this.message = this.message.substr(0,this.limit)
+					}
+				}
+			},
 		})
 	</script>	
 	</body>
