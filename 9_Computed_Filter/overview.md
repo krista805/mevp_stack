@@ -13,3 +13,6 @@ ex. you want to capitalize the message, you would add in a filter. Name the filt
     - ex. the <p> tag can get it's value from data as well as computed
 2. Data and computed could NEVER share the property name (eg. 'message:')
 3. Value in computed must be an anonymous function
+
+
+COMPUTED can retireve value from data as well as change value from data
