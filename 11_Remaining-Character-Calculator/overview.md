@@ -7,3 +7,5 @@ Remaining Character Calculator Project
 
 .substr() is used to crop strings at a designated location for a specificed length
 ex. obj.substr(arg-1, arg-2)
+
+
