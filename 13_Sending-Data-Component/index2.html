@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sending Data into Component</title>
+		<meta http-equiv='content-type' content='text/html;charset=utf-8'>
+		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+		<style>
+			h1,div,p,span{font-size:66px;font-family:helvetica}
+			.red_font{color:red}
+			.blue_background{background:blue}
+            .grey_background{background:#666}
+			.heavy_font{font-weight:bold}
+			.comp_root {background: red; color:white;}
+		</style>
+		<script type='text/javascript' src='vue.js'></script>
+	<body>	
+		<div id='app'>
+			<p>VM Instance</p>
+			<comp prop='direct value'></comp>
+			<comp v-bind:prop='vue_data'></comp>
+		</div>
+		<template id="temp">
+			<div class="comp_root">
+				<p>This is a component</p>
+				<p>{{ prop }}</p>
+			</div>
+		</template>
+	<script type='text/javascript'>
+		Vue.component('comp', {
+			template:'#temp',
+			data: function(){
+				return {
+					message:'Components own data and'+this.prop,
+				}
+			},
+			props:['prop'],
+			methods:{},
+		})
+
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				vue_data:"Vues data",
+			},
+		})
+	</script>	
+	</body>
+</html>
