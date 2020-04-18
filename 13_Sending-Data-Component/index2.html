@@ -16,14 +16,13 @@
 		<script type='text/javascript' src='vue.js'></script>
 	<body>	
 		<div id='app'>
-			<p>VM Instance</p>
 			<comp prop='direct value'></comp>
 			<comp v-bind:prop='vue_data'></comp>
 		</div>
 		<template id="temp">
 			<div class="comp_root">
-				<p>This is a component</p>
 				<p>{{ prop }}</p>
+				<p>{{ message }}</p>
 			</div>
 		</template>
 	<script type='text/javascript'>
@@ -31,7 +30,7 @@
 			template:'#temp',
 			data: function(){
 				return {
-					message:'Components own data and'+this.prop,
+					message:'Components own data and '+ this.prop,
 				}
 			},
 			props:['prop'],
