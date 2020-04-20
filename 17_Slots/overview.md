@@ -1,0 +1,3 @@
+- Putting content from Parent DIV into component tags will make that content disappear
+- Contents from Parent DIV can be displayed through slots
+- Location of slot tag decides location of the wrapped p tag
